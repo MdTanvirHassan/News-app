@@ -11,7 +11,7 @@ export class NewsItem extends Component {
             <div className="card-body"style={{height: "280px"}}>
                 <h6 className="card-title" style={{height: "80px"}}>{title}</h6>
                 <p className="card-text" style={{height: "100px", overflow:"hidden"}}>{description}</p>
-                <a href={newsUrl} target="blank" className="btn btn-sm btn-outline-primary"> Read more...</a>
+                <a href={newsUrl} target="blank" className="btn btn-sm btn-outline-primary"> Read more &rarr;</a>
             </div>
             </div>
       </div>
