@@ -11,14 +11,14 @@ export class News extends Component {
         }  
     }
     async componentDidMount(){
-        let url='https://newsapi.org/v2/top-headlines?country=us&apiKey=3d202c609e0e4308afa54e2d4c76721f&page=1&pageSize=18';
+        let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=3d202c609e0e4308afa54e2d4c76721f&page=1&pageSize=${this.props.pageSize}`;
         let data = await fetch(url)
         let parseData =await data.json();
         this.setState({articles: parseData.articles, totalResults: parseData.totalResults});
     }
     handlePreClick= async ()=> {
       console.log("Pre-click");
-      let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=3d202c609e0e4308afa54e2d4c76721f&page=${this.state.page-1}&pageSize=18`;
+      let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=3d202c609e0e4308afa54e2d4c76721f&page=${this.state.page-1}&pageSize=${this.props.pageSize}`;
         let data = await fetch(url)
         let parseData =await data.json();
         this.setState({
@@ -29,9 +29,9 @@ export class News extends Component {
 
     handleNextClick= async ()=> {
       console.log("Next-click")
-      this.next= this.state.totalResults/18
-      if(this.state.totalResults/18){
-        let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=3d202c609e0e4308afa54e2d4c76721f&page=${this.state.page+1}&pageSize=18`;
+      
+      if(this.state.totalResults/this.props.pageSize){
+        let url=`https://newsapi.org/v2/top-headlines?country=us&apiKey=3d202c609e0e4308afa54e2d4c76721f&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
         let data = await fetch(url)
         let parseData =await data.json();
         this.setState({
@@ -43,7 +43,7 @@ export class News extends Component {
   render() {
     return (
       <div className='container my-3'>
-        <h5>NewsTime - Top Headlines</h5><hr />
+        <h5 className='text-center text-success'>NewsTime - Top Headlines</h5><hr />
         <div className="row">
             {this.state.articles.map((element) =>{
                 return (
@@ -57,7 +57,7 @@ export class News extends Component {
         </div>
         <div className="d-flex justify-content-between mt-5">
           <button disabled={this.state.page<=1} className='btn btn-dark' type='button' onClick={this.handlePreClick}>&larr; Previous</button>
-          <button disabled={this.state.page===this.state.totalResults/18 }className='btn btn-dark' type='button' onClick={this.handleNextClick}>Next &rarr;</button>
+          <button disabled={(this.state.page+1 >Math.ceil(this.state.totalResults/this.props.pageSize)) }className='btn btn-dark' type='button' onClick={this.handleNextClick}>Next &rarr;</button>
         </div>
       </div>
     )
