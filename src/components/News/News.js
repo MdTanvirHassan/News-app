@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component} from 'react'
 import NewsItem from '../NewsItem/NewsItem'
 import PropTypes from 'prop-types'
 
+
 export class News extends Component {
+  
   static defaultProps = {
     country: 'us',
     pageSize: 8,
@@ -52,7 +54,10 @@ export class News extends Component {
     }
 
   render() {
+   
     return (
+      <>
+  
       <div className='container my-3'>
         <h4 className='text-center text-success'>NewsTime - Top Headlines</h4><hr />
         <div className="row">
@@ -60,7 +65,7 @@ export class News extends Component {
                 return (
                     <div className="col-md-4 my-1 p-1" key={element.url}>
                         <NewsItem title={element.title} description={element.description}
-                         imageUrl={element.urlToImage} newsUrl={element.url}/>
+                         imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}/>
                     </div>
                 )
              })
@@ -77,6 +82,8 @@ export class News extends Component {
             </button>
         </div>
       </div>
+          
+          </>
     )
   }
 }
