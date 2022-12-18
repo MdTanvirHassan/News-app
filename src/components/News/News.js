@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NewsItem from "../NewsItem/NewsItem";
 import PropTypes from "prop-types";
+import Snipper from "../Snipper/Snipper";
 
 export class News extends Component {
   static defaultProps = {
@@ -51,8 +52,9 @@ export class News extends Component {
         <div className="container my-3">
           <h4 className="text-center text-success">NewsTime - Top Headlines</h4>
           <hr />
+          {this.state.loading && <Snipper />}
           <div className="row">
-            {this.state.articles.map((element) => {
+            {!this.state.loading && this.state.articles.map((element) => {
               return (
                 <div className="col-md-4 my-1 p-1" key={element.url}>
                   <NewsItem
