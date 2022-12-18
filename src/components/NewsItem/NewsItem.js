@@ -7,17 +7,25 @@ export class NewsItem extends Component {
     return (
       <div>
         <div className="card" style={{width: "23rem"}}>
-        <span class="position-absolute top-10   badge rounded-pill bg-danger" style={{zIndex:'1', right:"0%", top:'1%'}}>
+        <span className="position-absolute top-10   badge rounded-pill bg-danger"
+           style={{zIndex:'1', right:"0%", top:'1%'}}>
         {source}
         </span>
             <img src={imageUrl} className="card-img-top" alt="...." style={{height: "175px"}}/>
             <div className="card-body"style={{height: "300px"}}>
-                <h6 className="card-title" style={{height: "60px"}}>{title}</h6>
-                <p className="card-text" style={{height: "100px", overflow:"hidden"}}>{!description?'...':description}</p>
-                <p class="card-text" style={{height: "35px", }}>
-                  <small class="text-muted">By {!author?'unknown':author} on {new Date(date).toGMTString()}.</small>
+                <h6 className="card-title text-primary"  style={{height: "60px"}}>{title}</h6>
+
+                <p className="card-text" style={{height: "100px", overflow:"hidden"}}>
+                  {!description?'...':description}
                 </p>
-                <a href={newsUrl} target="blank" className="btn btn-sm btn-outline-primary"> Read more &rarr;</a>
+                <p className="card-text" style={{height: "35px", }}>
+                  <small className="text-muted">
+                    By {!author?'unknown':author} on {new Date(date).toGMTString()}.
+                    </small>
+                </p>
+                <a href={newsUrl} target="blank" className="btn btn-sm btn-outline-primary"> 
+                Read more &rarr;
+                </a>
             </div>
             </div>
       </div>
