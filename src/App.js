@@ -6,7 +6,7 @@ import {Route, Routes,} from "react-router-dom";
 import './App.css';
 
 export class App extends Component {
-  pageSize=12
+  pageSize=11
   render() {
     return (
       <div className=''>
