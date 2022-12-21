@@ -14,13 +14,14 @@ export class News extends Component {
     pageSize: PropTypes.number,
     category: PropTypes.string,
   };
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       loading: false,
       page: 1,
     };
+    document.title = `NewsTime -${this.capitalizeFirstLetter(this.props.category)}`
   }
   async updateNews() {
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3d202c609e0e4308afa54e2d4c76721f&page=${this.state.page}&pageSize=${this.props.pageSize}`;
@@ -36,6 +37,10 @@ export class News extends Component {
   async componentDidMount() {
     this.updateNews();
   }
+
+  capitalizeFirstLetter=(string)=> {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   handlePreClick = async () => {
     this.setState({ page: this.state.page - 1 });
     this.updateNews();
@@ -50,7 +55,7 @@ export class News extends Component {
     return (
       <>
         <div className="container my-3">
-          <h4 className="text-center text-success">NewsTime - Top Headlines</h4>
+          <h4 className="text-center text-success">NewsTime - Top Headlines from {this.capitalizeFirstLetter(this.props.category)}</h4>
           <hr />
           {this.state.loading && <Snipper />}
           <div className="row">
