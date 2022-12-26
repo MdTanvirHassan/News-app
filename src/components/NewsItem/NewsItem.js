@@ -13,12 +13,12 @@ export class NewsItem extends Component {
         </span>
             <img src={imageUrl} className="card-img-top" alt="...." style={{height: "175px"}}/>
             <div className="card-body"style={{height: "300px"}}>
-                <h6 className="card-title text-primary"  style={{height: "60px"}}>{title}</h6>
+                <h6 className="card-title text-primary"  style={{height: "60px", overflow:'hidden'}}>{title}</h6>
 
                 <p className="card-text" style={{height: "100px", overflow:"hidden"}}>
                   {!description?'...':description}
                 </p>
-                <p className="card-text" style={{height: "35px", }}>
+                <p className="card-text" style={{height: "35px", overflow:'hidden'}}>
                   <small className="text-muted">
                     By {!author?'unknown':author} on {new Date(date).toGMTString()}.
                     </small>
