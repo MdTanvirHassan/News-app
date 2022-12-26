@@ -13,7 +13,7 @@ export default function Footer() {
     </div>
 
     <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li className="ms-3"><a className="text-dark" href='/'><i class="bi bi-twitter"width="24" height="24"></i></a></li>
+      <li className="ms-3"><a className="text-dark" href='/'><i className="bi bi-twitter"width="24" height="24"></i></a></li>
       <li className="ms-3"><a className="text-dark" href='/instagram'><span className="" width="24" height="24"><i className="bi bi-instagram"></i></span></a></li>
       <li className="ms-3"><a className="text-dark" href='/facebook'><span className="" width="24" height="24"><i className="bi bi-facebook"></i></span></a></li>
     </ul>
